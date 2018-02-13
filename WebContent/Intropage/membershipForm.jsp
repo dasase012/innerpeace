@@ -9,7 +9,7 @@
 
 <meta charset="UTF-8">
 
-<title>이너피스와 함께해 주셔서 감사합니다.</title>
+<title>이너피스 회원가입</title>
 
 </head>
 
@@ -25,12 +25,14 @@
 
 	<form action="JoinOK" method="post">
 
-		이름 : <input type="text" name="name" size="20"><br />
-
-		아이디 :<input type="text" name="id" size="20"><br />		
-
-		비밀번호 :<input type="password" name="pw" size="20"><br/>
-
+		<table class="w3-table-all"  style="width:70%;" >
+		<tr><td>
+		이름 : <input type="text" name="name" size="20"></td></tr>
+		<tr><td>
+		아이디 :<input type="text" name="id" size="20"></td></tr>		
+		<tr><td>
+		비밀번호 :<input type="password" name="pw" size="20"></td></tr>
+		<tr><td>
 		전화번호 :<select name = "hp">
 
 				<option value="010">010</option>
@@ -45,11 +47,12 @@
 
 		</select>
 
-		<input type="text" name="hp2" size="4">-<input type="text" name="hp3" size=4><br/>
-
-		성별 : <input type="radio" name="gender" value="man">남 <input type="radio" name="gender" value="woman">여<br/>
-
-		<input type="submit" value="회원가입">&nbsp;&nbsp;<input type="reset" value="취소">	
+		<input type="text" name="hp2" size="4">-<input type="text" name="hp3" size=4></td></tr>
+		
+		<tr><td>
+		성별 : <input type="radio" name="gender" value="man">남 <input type="radio" name="gender" value="woman">여</td></tr>
+		<tr><td>
+		<input type="submit" value="작성완료">&nbsp;&nbsp;<input type="reset" value="취소"></td></tr>	
 
 	</form>
 	</table>

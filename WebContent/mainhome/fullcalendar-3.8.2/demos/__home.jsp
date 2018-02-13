@@ -88,8 +88,10 @@
   #calendar {
     max-width: 45%;
     margin: 0 auto;
-    margin-top: 5%;
+    margin-top: 2%;
     margin-right: 40%;
+    margin-bottom: 20%;
+    
   }
 
   #navigation{
@@ -103,13 +105,13 @@
 <body>
 	<h1 class="w3-center">WELCOME
 	<!-- home logo top right -->
-	<a href="__home.jsp">
+	<a href="/innerpeace/mainhome/fullcalendar-3.8.2/demos/__home.jsp">
 	<img class="w3-right" src="<%=request.getContextPath() %>/resources/home.png" style="width: 40px; height: 40px;">
 	</a></h1>
 	<!-- header navigation -->
 	<div class="w3-bar w3-border w3-light-grey" id="navigation">
-	  <a href="#" class="w3-bar-item w3-button w3-mobile w3-light-grey" style="width:25%">의료진/병원 찾기</a>
-	  <a href="#" class="w3-bar-item w3-button w3-mobile" style="width:25%">예약관리</a>
+	  <a href="/innerpeace/doc_find/map.jsp" class="w3-bar-item w3-button w3-mobile w3-light-grey" style="width:25%">의료진/병원 찾기</a>
+	  <a href="/innerpeace/reservation/reservation.jsp" class="w3-bar-item w3-button w3-mobile" style="width:25%">예약관리</a>
 	  <a href="#" class="w3-bar-item w3-button w3-mobile" style="width:25%">원격진료</a>
 	  <a href="#" class="w3-bar-item w3-button w3-mobile" style="width:25%">진료기록</a>
 	</div>

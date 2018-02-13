@@ -45,7 +45,7 @@
 
       <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
         <button onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-button w3-red">취소</button>
-              <form class="w3-container" action="membershipForm2.jsp">
+              <form class="w3-container" action="membershipForm.jsp">
         	  	<button class="w3-button w3-block w3-grey w3-section w3-padding" type="submit">회원가입</button>        	  	
         	  </form>
         <span class="w3-right w3-padding w3-hide-small">Forgot <a href="#">password?</a></span>
