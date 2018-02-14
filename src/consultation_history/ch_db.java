@@ -7,9 +7,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class ch_db {
-	
+	메서드
 	//1.jdbc 드라이버 로딩
-	Class.("oracle.jdbc.driver.OracleDriver");
+	Class.forName("oracle.jdbc.driver.OracleDriver");
 	Connection conn = null;
 	Statement stmt = null;
 	ResultSet rs = null;
