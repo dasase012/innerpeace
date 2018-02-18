@@ -74,14 +74,14 @@
 	<div id="calendar"></div>
 	
 	<!-- map search -->
-	<form class="w3-container w3-card-4" action="/action_page.php">
+	<form class="w3-container w3-card-4" action="/action_page.php" style="width: 50%; margin-left: 25%; margin-right: 25%;">
 	  <div class="radio w3-display-center" style="margin-left: 35%;" >
          <input type="radio" id="radio1" name="keyfield" value="mb_addr1" checked=checked onClick="calc('b1');" ><label for="radio1"><span><span></span></span>지역명</label>
          <input type="radio" id="radio2" name="keyfield" value="mb_5"  onClick="calc('b2');"   ><label for="radio2"><span><span></span></span>병원명</label>
          <input type="radio" id="radio3" name="keyfield" value="mb_name" onClick="calc('b2');"  ><label for="radio3"><span><span></span></span>전문의명</label>
       </div>
 		 
-	  <select class="w3-select w3-border" name="option" style="width: 8%; margin-left: 34%;">
+	  <select class="w3-select w3-border" name="option" style="width: 20%;">
 	    <option value="" disabled selected>시/도</option>
 	    <option value='서울'>서울</option> 
            <option value='부산'>부산</option> 
@@ -104,19 +104,19 @@
 	  <!-- <select name='key2'  class=select> 
         <option value=''>전지역</option> 
       </select> -->
-	  <select class="w3-select w3-border" name="option" style="width: 8%; " >
+	  <select class="w3-select w3-border" name="option" style="width: 20%; " >
 	    <option value="" disabled selected>Choose your option2</option>
 	    <option value="1">Option 1</option>
 	    <option value="2">Option 2</option>
 	    <option value="3">Option 3</option>
 	  </select>
-	  <select class="w3-select w3-border" name="option" style="width: 8%;" >
+	  <select class="w3-select w3-border" name="option" style="width: 20%;" >
 	    <option value="" disabled selected>Choose your option3</option>
 	    <option value="1">Option 1</option>
 	    <option value="2">Option 2</option>
 	    <option value="3">Option 3</option>
 	  </select>
-		<input type="text" placeholder="Search.." name="search2" style="width: 10%; " >
+		<input type="text" placeholder="Search.." name="search2" style="width: 30%; " >
 	    <button type="submit"><i class="fa fa-search"></i></button>
 	</form>
 	
