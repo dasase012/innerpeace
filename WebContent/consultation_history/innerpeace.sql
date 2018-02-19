@@ -16,7 +16,7 @@ create table member(
     birthdate varchar2(50) not null,
     tel varchar2(15) not null,
     email varchar2(30) ,
-    con_past varchar2(10) not null,
+    con_past varchar2(10) ,
     con_date varchar2(50) ,
     con_cat varchar2(50),
     position varchar2(50) not null,    

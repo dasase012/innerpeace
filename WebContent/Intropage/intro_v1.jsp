@@ -99,12 +99,12 @@
         	 class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
       </div>
 
-      <form class="w3-container" action="/innerpeace/mainhome/fullcalendar-3.8.2/demos/__home.jsp">
+      <form class="w3-container" action="/innerpeace/login/loginPro.jsp" method="post">
         <div class="w3-section">
           <label><b>아이디</b></label>
-          <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="아이디를 입력하세요" name="usrname" required>
+          <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="아이디를 입력하세요" name="id" required>
           <label><b>비밀번호</b></label>
-          <input class="w3-input w3-border" type="password" placeholder="비밀번호를 입력하세요" name="psw" required>
+          <input class="w3-input w3-border" type="password" placeholder="비밀번호를 입력하세요" name="pwd" required>
           <input class="w3-check w3-margin-top" type="checkbox" checked="checked"> 아이디 기억하기
 		</div>
       <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
@@ -132,14 +132,15 @@
 					아이디 :<input class="w3-input w3-border w3-light-grey" type="text" name="id" size="20"></label><br>
 					<label class="w3-text-teal">
 					비밀번호 :<input class="w3-input w3-border  w3-light-grey"  type="password" name="pwd" size="20"></label><br>
-					<label class="w3-text-teal">
-					비밀번호 확인 :<input class="w3-input w3-border  w3-light-grey" type="password" name="pwdconfirm" size="20"></label><br>
+					<!-- <label class="w3-text-teal">
+					비밀번호 확인 :<input class="w3-input w3-border  w3-light-grey" type="password" name="pwdconfirm" size="20"></label><br> -->
 					<label class="w3-text-teal">
 					성별 : <input type="radio" name="gender" value="male">남
 						 <input type="radio" name="gender" value="female">여</label><br><br>
 					<label class="w3-text-teal">
 					생년월일 :<input class="w3-input w3-border w3-light-grey" type="date" name="birthdate" size="20"></label><br>
-							
+					
+						 		
 					<!-- 연락처 -->
 					<label class="w3-text-teal">
 					전화번호 :<input class="w3-input w3-border w3-light-grey" type="tel" name="tel" size="20">
@@ -151,13 +152,20 @@
 					<!-- 과거진료이력 -->
 					<label class="w3-text-teal">
 					과거에 상담 혹은 진료를 받은 적이 있습니까?<br>
-					<input type="radio" name="yes" value="yes">있다
-					<input type="radio" name="no" value="no">없다
+					<input type="radio" name="con_past" value="1">있다
+					<input type="radio" name="con_past" value="0">없다
 					</label><br><br>
 			        <label class="w3-text-teal">
 					있다면 가장 최근 상담/진료 받으신 날짜를 알려주세요<br>
 					<input class="w3-input w3-border w3-light-grey"  type="date" name="con_date" size="20">
 					</label><br>
+					<label class="w3-text-teal">
+					상담받으신 내용을 간단히 알려주세요<br>
+					<input class="w3-input w3-border w3-light-grey"  type="text" name="con_cat" size="20">
+					</label><br>					
+					<label class="w3-text-teal">
+					분류 : <input type="radio" name="position" value="patient">일반인
+						 <input type="radio" name="position" value="doc">의료진</label><br><br>
 					<label>
 					
 					<input type="submit" value="작성완료"><!-- &nbsp;&nbsp; -->

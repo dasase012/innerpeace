@@ -7,11 +7,11 @@ public class JoinDataBean {
 	private String name;
 	private String pwd;
 	private String gender;
-	private Date birthdate;
+	private String birthdate;
 	private String tel;
 	private String email;
 	private String con_past;
-	private Date con_date;
+	private String con_date;
 	private String con_cat;
 	private String position;
 	private Date regdate;
@@ -40,10 +40,10 @@ public class JoinDataBean {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public Date getBirthdate() {
+	public String getBirthdate() {
 		return birthdate;
 	}
-	public void setBirthdate(Date birthdate) {
+	public void setBirthdate(String birthdate) {
 		this.birthdate = birthdate;
 	}
 	public String getTel() {
@@ -64,10 +64,10 @@ public class JoinDataBean {
 	public void setCon_past(String con_past) {
 		this.con_past = con_past;
 	}
-	public Date getCon_date() {
+	public String getCon_date() {
 		return con_date;
 	}
-	public void setCon_date(Date con_date) {
+	public void setCon_date(String con_date) {
 		this.con_date = con_date;
 	}
 	public String getCon_cat() {
