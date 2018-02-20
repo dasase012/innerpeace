@@ -14,9 +14,9 @@
 
     $('#calendar').fullCalendar({
       header: {
-        left: 'prev,next today',
+        left: 'prev,next',
         center: 'title',
-        right: 'month,agendaWeek,agendaDay'
+        right: 'month,agendaDay'
       },
       defaultDate: '2018-02-12',
       navLinks: true, // can click day/week names to navigate views
@@ -108,6 +108,12 @@
 	<a href="/innerpeace/mainhome/fullcalendar-3.8.2/demos/__home.jsp">
 	<img class="w3-right" src="<%=request.getContextPath() %>/resources/home.png" style="width: 40px; height: 40px;">
 	</a></h1>
+	<!-- logout -->
+	<a href="/innerpeace/login/logout.jsp">
+	<button type="button" class="btn btn-default btn-sm">
+       Log out
+    </button>
+	
 	<!-- header navigation -->
 	<div class="w3-bar w3-border w3-light-grey" id="navigation">
 	  <a href="/innerpeace/doc_find/map.jsp" class="w3-bar-item w3-button w3-mobile w3-light-grey" style="width:25%">의료진/병원 찾기</a>
