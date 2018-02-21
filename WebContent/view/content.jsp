@@ -1,5 +1,5 @@
-<%@page import="board.BoardDBBean"%>
-<%@page import="board.BoardDataBean"%>
+<%@page import="login.JoinDataBean"%>
+<%@page import="login.JoinDBBean"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
@@ -17,8 +17,8 @@
 		pageNum="1";}
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 	try{
-		BoardDBBean dbPro = BoardDBBean.getInstance();
-		BoardDataBean article = dbPro.getArticle(num,boardid,"content");
+		JoinDBBean dbPro = JoinDBBean.getInstance();
+		JoinDataBean article = dbPro.getArticle(num,boardid,"content");
 		int ref = article.getRef();
 		int re_step = article.getRe_step();
 		int re_level = article.getRe_level();

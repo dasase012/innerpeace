@@ -6,6 +6,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class JoinDBBean {
@@ -18,7 +20,7 @@ public class JoinDBBean {
 	}
 	
 	//Connection method
-	public static Connection getConnection() {
+	public static Connection getConnection(){
 		Connection conn = null;
 		try {
 			/*String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xes";*///	HOME
@@ -79,6 +81,127 @@ public class JoinDBBean {
 		}
 		return -2; //데이터베이스 오류
 	}
+	
+	//getMemberCount
+	public int getMemberCount(String boardid){
+		int x=0;
+		String sql="select nvl(count(*),0) from member where boardid = ?";
+		Connection con = getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int number = 0;
+		
+		try {
+		pstmt=con.prepareStatement(sql);
+		pstmt.setString(1, boardid);
+		
+		rs=pstmt.executeQuery();
+		if(rs.next()) {x=rs.getInt(1);}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(con,rs,pstmt);
+		}
+		return x;
+	}
+	
+	//getMembers
+	public List getMembers(int startRow, int endRow, String boardid) {
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List memberList = null;
+		String sql="";
+		
+		try {
+			conn = getConnection();
+			sql = "select * from " 
+					+"(select rownum rnum,a.* "
+					+" from (select num,writer,email,subject,passwd,"
+					+ "reg_date,readcount,ref,re_step,re_level,content,"
+					+ "ip from board where boardid = ? order by ref desc , re_step) "
+					+ " a ) where rnum between ? and ? ";
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, boardid);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			rs=pstmt.executeQuery();
+			
+		if(rs.next()) {
+			memberList = new ArrayList();
+			do{
+				JoinDataBean members = new JoinDataBean();
+				members.setId(rs.getString("id"));
+				members.setName(rs.getString("name"));
+				members.setPwd(rs.getString("pwd"));
+				members.setGender(rs.getString("gender"));
+				members.setBirthdate(rs.getString("birthdate"));
+				members.setTel(rs.getString("tel"));
+				members.setEmail(rs.getString("email"));
+				members.setCon_past(rs.getString("con_past"));
+				members.setCon_date(rs.getString("con_date"));
+				members.setCon_cat(rs.getString("con_cat"));
+				members.setPosition(rs.getString("position"));
+				memberList.add(members);
+			}while(rs.next());}
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			close(conn,rs,pstmt);
+		}
+		return memberList;
+	}
+	
+	//getMember
+	public JoinDataBean getMember(int num, String boardid, String chk) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		JoinDataBean members = null;
+		String sql="";
+		
+		try {
+			conn = getConnection();
+			
+			if(chk.equals("content")) {
+			sql="update board set readcount=readcount+1 "
+					+ "where num = ? and boardid = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			pstmt.setString(2, boardid);
+			pstmt.executeUpdate();
+			}
+			
+			sql="select * from board where num = ? and boardid = ?";
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			pstmt.setString(2, boardid);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				members = new JoinDataBean();
+				members.setId(rs.getString("id"));
+				members.setName(rs.getString("name"));
+				members.setPwd(rs.getString("pwd"));
+				members.setGender(rs.getString("gender"));
+				members.setBirthdate(rs.getString("birthdate"));
+				members.setTel(rs.getString("tel"));
+				members.setEmail(rs.getString("email"));
+				members.setCon_past(rs.getString("con_past"));
+				members.setCon_date(rs.getString("con_date"));
+				members.setCon_cat(rs.getString("con_cat"));
+				members.setPosition(rs.getString("position"));
+				
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(conn,rs,pstmt);
+		}return members;
+		
+	}
+	
 	
 	//insert
 	public void insertData(JoinDataBean info) {

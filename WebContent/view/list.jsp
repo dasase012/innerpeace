@@ -1,6 +1,6 @@
-<%@page import="board.BoardDataBean"%>
+<%@page import="login.JoinDataBean"%>
+<%@page import="login.JoinDBBean"%>
 <%@page import="java.util.List"%>
-<%@page import="board.BoardDBBean"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
@@ -17,13 +17,13 @@
    int endRow = currentPage*pageSize;
    int count = 0;
    int number = 0;
-   List articleList = null;
-   BoardDBBean dbPro = BoardDBBean.getInstance();
-   count = dbPro.getArticleCount(boardid);
+   List memberList = null;
+   JoinDBBean dbPro = JoinDBBean.getInstance();
+   count = dbPro.getMemberCount(boardid);
    if(count>0){
-	articleList = dbPro.getArticles(startRow,endRow,boardid);
+	memberList = dbPro.getMembers(startRow,endRow,boardid);
    }
-   number = count-(currentPage-1)*pageSize;
+  	number = count-(currentPage-1)*pageSize;
    %>
 
 <html>
@@ -37,7 +37,7 @@
 		<h3><%=boardid %>(전체 글:<%=count %>)</h3>
 	</span>
 <p class="w3-right w3-padding-right-large">
-	<a href="writeForm.jsp">글쓰기</a></p>
+	<a href="/innerpeace/Intropage/joinForm.jsp">글쓰기</a></p>
 	<%	if(count==0){ %>
 	<table class="table-bordered" width="700">
 		<tr class="w3-grey">
@@ -46,31 +46,18 @@
 	<%}else {%>
 	<table class="w3-table-all" width="700">
 		<tr class="w3-grey">
-		<td align="center" width="50">번호</td>
-		<td align="center" width="250">제목</td>
-		<td align="center" width="100">작성자</td>
-		<td align="center" width="150">작성일</td>
-		<td align="center" width="50">조회</td>
-		<td align="center" width="100">IP</td>
-	<% for(int i=0;i<articleList.size();i++){
-		BoardDataBean article = (BoardDataBean) articleList.get(i);%>
+		<td align="center" width="50">아이디</td>
+		<td align="center" width="250">이름</td>
+		<td align="center" width="100">성별</td>
+		<td align="center" width="150">가입일</td>
+	<% for(int i=0;i<memberList.size();i++){
+		JoinDataBean member = (JoinDataBean) memberList.get(i);%>
 		<tr height="30">
 		<td align="center" width="50"><%=number-- %></td>
-		<td width="250"><% int wid=0;
-		if (article.getRe_level()>0){
-			wid=5*(article.getRe_level());%> <!-- wid => re 댓글 이미지가 들어갈 공간 5px만큼 띄우기 위한 변수  -->
-			<img src="../images/level.gif" width="<%=wid %>" height="16">
-			<img src="../images/re.gif">
-			<%}else{ %>
-			<img src="../images/level.gif" width="<%=wid %>" height="16">
-			<%} %><a href="content.jsp?num=<%=article.getNum() %>&pageNum=<%=currentPage %>">
-			<%=article.getSubject() %></a>
-			<% if(article.getReadcount() >= 20){ 
-			%><img src="../images/hot.gif" border="0" height="16"><%} %></td>
-			<td align="center" width="100"><%=article.getWriter() %></td>
-			<td align="center" width="150"><%=sdf.format(article.getReg_date()) %></td>
-			<td align="center" width="50"><%=article.getReadcount() %></td>
-				<td align="center" width="100"><%=article.getIp() %></td>
+		<td width="250"><a href="content.jsp?id=<%=member.getId()%>&pageNum=<%=currentPage %>">
+			<%=member.getName()%></a></td>
+			<td align="center" width="100"><%=member.getGender() %></td>
+			<td align="center" width="150"><%=sdf.format(member.getRegdate()) %></td>
 			</tr><%} %>	</table> <% } %>
 
 <div class="w3-center">
