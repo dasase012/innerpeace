@@ -176,6 +176,11 @@
 		var map = new naver.maps.Map(mapDiv);
 		</script>
 	
+	<!-- map right-body -->
+	<div id="hoslist" class="section1">
+		
+	</div>
+	
 	<!-- footer contact admin -->
 	<h6 class="w3-bottom" align="center">contact: admin@innerpeace.com</h6>
 </body>

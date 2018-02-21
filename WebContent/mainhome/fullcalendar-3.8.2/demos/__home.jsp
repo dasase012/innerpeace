@@ -16,7 +16,7 @@
       header: {
         left: 'prev,next',
         center: 'title',
-        right: 'month,agendaDay'
+        right: 'month'
       },
       defaultDate: '2018-02-12',
       navLinks: true, // can click day/week names to navigate views
@@ -74,6 +74,25 @@
     });
 
   });
+  $(document).ready(function() {
+
+	    $('#calendar-list').fullCalendar({
+	      header: {
+	        left: 'today',
+	        right: 'listDay,listWeek'
+	      },
+	      views: {
+	          listDay: { buttonText: 'list day' },
+	          listWeek: { buttonText: 'list week' }
+	        },
+
+	        defaultView: 'listDay',
+	        defaultDate: '2018-02-12',
+	        navLinks: true, // can click day/week names to navigate views
+	        editable: true,
+	        eventLimit: true
+	    });
+  });
 
 </script>
 <style>
@@ -93,6 +112,13 @@
     margin-bottom: 20%;
     
   }
+	#calendar-list{
+	max-width: 20%;
+    margin: 0 auto;
+
+    margin-right: 18%;
+
+	}
 
   #navigation{
   	width: 60%;
@@ -124,6 +150,10 @@
 	
 	<!-- calendar left-body -->
 	<div id='calendar'></div>
+	
+	<!-- calendar right-body -->
+	<div id="calendar-list" class="w3-display-right"></div>	
+		<!-- db에 연동해서 왼쪽 바디 캘린더에 들어간 예약 내용을 오른쪽 리스트에 뿌려주면 됨 -->
 	
 	<!-- footer contact admin -->
 	<h6 class="w3-bottom" align="center">contact: admin@innerpeace.com</h6>
