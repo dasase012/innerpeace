@@ -9,6 +9,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import board.BoardDataBean;
+
 
 public class JoinDBBean {
 	//Singleton : getInstance
@@ -83,9 +85,9 @@ public class JoinDBBean {
 	}
 	
 	//getMemberCount
-	public int getMemberCount(String boardid){
+	public int getMemberCount(){
 		int x=0;
-		String sql="select nvl(count(*),0) from member where boardid = ?";
+		String sql="select nvl(count(*),0) from member ";
 		Connection con = getConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -93,7 +95,7 @@ public class JoinDBBean {
 		
 		try {
 		pstmt=con.prepareStatement(sql);
-		pstmt.setString(1, boardid);
+		
 		
 		rs=pstmt.executeQuery();
 		if(rs.next()) {x=rs.getInt(1);}
@@ -106,7 +108,7 @@ public class JoinDBBean {
 	}
 	
 	//getMembers
-	public List getMembers(int startRow, int endRow, String boardid) {
+	public List getMembers(int startRow, int endRow) {
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -118,14 +120,13 @@ public class JoinDBBean {
 			conn = getConnection();
 			sql = "select * from " 
 					+"(select rownum rnum,a.* "
-					+" from (select num,writer,email,subject,passwd,"
-					+ "reg_date,readcount,ref,re_step,re_level,content,"
-					+ "ip from board where boardid = ? order by ref desc , re_step) "
+					+" from (select id,name,pwd,gender,birthdate,tel,email,"
+					+ "con_past,con_date,con_cat,position,regdate	"
+					+ "from member order by regdate) "
 					+ " a ) where rnum between ? and ? ";
 			pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1, boardid);
-			pstmt.setInt(2, startRow);
-			pstmt.setInt(3, endRow);
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
 			rs=pstmt.executeQuery();
 			
 		if(rs.next()) {
@@ -143,6 +144,7 @@ public class JoinDBBean {
 				members.setCon_date(rs.getString("con_date"));
 				members.setCon_cat(rs.getString("con_cat"));
 				members.setPosition(rs.getString("position"));
+				members.setRegdate(rs.getTimestamp("regdate"));
 				memberList.add(members);
 			}while(rs.next());}
 		}catch(Exception ex) {
@@ -154,7 +156,7 @@ public class JoinDBBean {
 	}
 	
 	//getMember
-	public JoinDataBean getMember(int num, String boardid, String chk) {
+	public JoinDataBean getMember(String id, String chk) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -165,18 +167,16 @@ public class JoinDBBean {
 			conn = getConnection();
 			
 			if(chk.equals("content")) {
-			sql="update board set readcount=readcount+1 "
-					+ "where num = ? and boardid = ?";
+			sql="update member set readcount=readcount+1 "
+					+ "where id = ? ";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, num);
-			pstmt.setString(2, boardid);
+			pstmt.setString(1, id);
 			pstmt.executeUpdate();
 			}
 			
-			sql="select * from board where num = ? and boardid = ?";
+			sql="select * from member where id = ? ";
 			pstmt=conn.prepareStatement(sql);
-			pstmt.setInt(1, num);
-			pstmt.setString(2, boardid);
+			pstmt.setString(1, id);
 			rs=pstmt.executeQuery();
 			
 			if(rs.next()) {
@@ -192,7 +192,6 @@ public class JoinDBBean {
 				members.setCon_date(rs.getString("con_date"));
 				members.setCon_cat(rs.getString("con_cat"));
 				members.setPosition(rs.getString("position"));
-				
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -238,12 +237,50 @@ public class JoinDBBean {
 	}	
 	
 	//delete
-	public void deleteData(JoinDataBean a) {
+	public int deleteData(String id, String pwd)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "delete from member where id=? and passwd=?";
+		int x = -1;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, pwd);
+			x=pstmt.executeUpdate();
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			close(conn,rs,pstmt);
+		}return x;
 		
 	}
-	//update
-	public void updateData(JoinDataBean a) {
+	//update  ing
+	public int updateData(JoinDataBean info) {
 		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int chk = 0;
+		
+		try {			
+			conn = getConnection();
+			String sql = "update board set writer=?,email=?,subject=?,content=? where num=? and passwd=?";
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1,info.getWriter());
+			pstmt.setString(2,article.getEmail());
+			pstmt.setString(3,article.getSubject());
+			pstmt.setString(4,article.getContent());
+			pstmt.setInt(5,article.getNum());
+			pstmt.setString(6,article.getPasswd());
+			chk=pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(conn,null,pstmt);
+		}return chk;
 	}
 
 }

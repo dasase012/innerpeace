@@ -7,6 +7,7 @@ create table consultation_history(
 	content varchar2(3000) not null,
 	pwd		varchar2(4)	not null
 );
+
 drop table member;
 create table member(
     id varchar2(50) primary key,

@@ -7,56 +7,62 @@
 <head><title>게시판</title>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
-<% String boardid = request.getParameter("boardid");
-	if (boardid==null) boardid = "1";%>
 <%
-	int num = Integer.parseInt(request.getParameter("num"));	//어떤 게시물을 볼래? 
-
+	String id = request.getParameter("id");
+			
 	String pageNum = request.getParameter("pageNum");
 	if(pageNum == null || pageNum ==""){
-		pageNum="1";}
+		pageNum="1";} 
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 	try{
 		JoinDBBean dbPro = JoinDBBean.getInstance();
-		JoinDataBean article = dbPro.getArticle(num,boardid,"content");
-		int ref = article.getRef();
-		int re_step = article.getRe_step();
-		int re_level = article.getRe_level();
+		JoinDataBean member = dbPro.getMember(id, "content");
+
+
 %>
 <body><br><br><b>글 내용 보기</b>
 <div class="container">
 	<table class="w3-table-all" style="width:80%;">
 	<tr height="30">
-		<td width="125" align="center">글번호</td>
-		<td width="125" align="center"><%=article.getNum()%></td>
-		<td width="125">조회수</td>
-		<td width="125" align="center"><%=article.getReadcount() %></td>
+		<td width="125" align="center">아이디</td>
+		<td width="125" align="center"><%=member.getId()%></td>
+		<td width="125">이름</td>
+		<td width="125" align="center"><%=member.getName() %></td>
+		<td width="125">비밀번호</td>
+		<td width="125" align="center"><%=member.getPwd() %></td>
 		</tr><tr height="30">
-		<td width="125">작성자</td>
-		<td width="125" align="center"><%=article.getWriter() %></td>
-		<td width="125" align="center">작성일</td>
-		<td width="125" align="center"><%=sdf.format(article.getReg_date()) %></td>
+		<td width="125">성별</td>
+		<td width="125" align="center"><%=member.getGender() %></td>
+		<td width="125">생년월일</td>
+		<td width="125" align="center"><%=member.getBirthdate()%></td>
+		<td width="125">연락처</td>
+		<td width="125" align="center"><%=member.getTel() %></td>
 		</tr><tr height="30">
-		<td align="center" width="125">글제목</td>
-		<td align="center" width="375" colspan="3"><%=article.getSubject() %></td></tr>
-		<tr height="30">
-		<td align="center" width="125">글내용</td>
-		<td align="left" width="375" colspan="3"><pre><%=article.getContent()%></pre></td>
-		</tr> 
-	<tr height="30">
-		<td colspan="4" class="w3-center">
-			<input type="button" value="글수정" 
-			onclick="document.location.href='updateForm.jsp?num=<%=article.getNum() %>&pageNum=<%=pageNum %>'">
+		<td width="125">이메일</td>
+		<td width="125" align="center"><%=member.getEmail() %></td>
+		<td width="125">과거 진료경험</td>
+		<td width="125" align="center"><%=member.getCon_past() %></td>
+			<td width="125">최근 진료일</td>
+			<td width="125" align="center"><%=member.getCon_date() %></td>
+		</tr><tr height="30">
+			<td width="125">진료과목</td>
+			<td width="125" align="center"><%=member.getCon_cat() %></td>
+		<td width="125">구분</td>
+		<td width="125" align="center"><%=member.getPosition() %></td>
+		<td width="125" align="center">가입일</td>
+		<td width="125" align="center"><%=sdf.format(member.getRegdate()) %></td>
+		</tr>		 
+	<%-- <tr height="30">
+		<td colspan="4"  class="w3-center">
+			<input type="button" value="회원정보수정" 
+			onclick="document.location.href='updateForm.jsp?id=<%=member.getId() %>&pageNum=<%=pageNum %>'">
 			&nbsp;&nbsp;&nbsp;&nbsp;
-			<input type="button" value="글삭제" 
-			onclick="document.location.href='deleteForm.jsp?num=<%=article.getNum() %>&pageNum=<%=pageNum %>'">
-			&nbsp;&nbsp;&nbsp;&nbsp;
-			<input type="button" value="답글쓰기" 
-			onclick="document.location.href='writeForm.jsp?num=<%=num %>&ref=<%=ref %>&re_step=<%=re_step%>&re_level=<%=re_level%>&pageNum=<%=pageNum%>'">
+			<input type="button" value="강제탈퇴" 
+			onclick="document.location.href='deleteForm.jsp?id=<%=member.getId() %>&pageNum=<%=pageNum %>'">
 			&nbsp;&nbsp;&nbsp;&nbsp;
 			<input type="button" value="글목록" 
 			onclick="document.location.href='list.jsp?pageNum=<%=pageNum %>'">
-		</td></tr></table>
+		</td></tr> --%></table>
 		<%
 		}catch(Exception e){}%>
 </div>

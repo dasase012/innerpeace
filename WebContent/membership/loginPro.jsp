@@ -30,6 +30,10 @@
 	      history.back();
 	     </script>
 	<%
+	   }else if(id.equals("admin")){
+			  session.setAttribute("id",id);
+			   
+			  response.sendRedirect("/innerpeace/view/list.jsp?id="+id);
 	   }
 	   else
 	   {

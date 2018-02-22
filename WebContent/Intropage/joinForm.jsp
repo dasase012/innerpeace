@@ -26,7 +26,7 @@
 
 <body>
 	<!-- return logo top right -->
-	<a href="/innerpeace/Intropage/intro4.jsp">
+	<a href="/innerpeace/Intropage/intro_v1.jsp">
 	<img class="w3-right" src="<%=request.getContextPath() %>/resources/home.png" style="width: 40px; height: 40px;">
 	</a></h1>
 	

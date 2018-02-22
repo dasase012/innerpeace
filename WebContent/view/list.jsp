@@ -6,8 +6,7 @@
     pageEncoding="EUC-KR"%>
     
 <% request.setCharacterEncoding("euc-kr"); %>
-<% String boardid = request.getParameter("boardid"); //어떤 게시판을 보여줄래? ==> boardid 파라미터로 넘김
-	if(boardid==null) boardid="1";%>
+
 <% int pageSize = 5;
    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
    String pageNum = request.getParameter("pageNum");
@@ -19,9 +18,9 @@
    int number = 0;
    List memberList = null;
    JoinDBBean dbPro = JoinDBBean.getInstance();
-   count = dbPro.getMemberCount(boardid);
+   count = dbPro.getMemberCount();
    if(count>0){
-	memberList = dbPro.getMembers(startRow,endRow,boardid);
+	memberList = dbPro.getMembers(startRow,endRow);
    }
   	number = count-(currentPage-1)*pageSize;
    %>
@@ -34,7 +33,7 @@
 	<p class="w3-left" style="padding-left: 30px"></p>
 <div class="w3-container">
 	<span class="w3-center w3-large">
-		<h3><%=boardid %>(전체 글:<%=count %>)</h3>
+		<h3>(전체 글:<%=count %>)</h3>
 	</span>
 <p class="w3-right w3-padding-right-large">
 	<a href="/innerpeace/Intropage/joinForm.jsp">글쓰기</a></p>
