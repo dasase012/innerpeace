@@ -6,11 +6,6 @@
 <html>
 <head><title>게시판</title>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<!-- <style type="text/css">
-	.info{
-		font-size: 20pt;
-	}
-</style> -->
 </head>
 <%
 	String id = request.getParameter("id");
@@ -25,48 +20,38 @@
 
 
 %>
-<form class="w3-container w3-card-4 w3-white w3-text-black w3-margin" style="height: 100%;">
-<div class="w3-row w3-section">
-<body><br><br><center><h3><b><u>회원 정보</u></b></h3><br><br>
-<div class="container" id="info">
-	<table class="w3-table w3-bordered w3-centered" style="width:50%;">
+<body><br><br><b>글 내용 보기</b>
+<div class="container">
+	<table class="w3-table-all" style="width:80%;">
 	<tr height="30">
-		<td width="125" align="center"><b>아이디</b></td>
+		<td width="125" align="center">아이디</td>
 		<td width="125" align="center"><%=member.getId()%></td>
-	</tr><tr height="30">	
-		<td width="125"><b>이름</b></td>
+		<td width="125">이름</td>
 		<td width="125" align="center"><%=member.getName() %></td>
-	</tr><tr height="30">	
-		<td width="125"><b>비밀번호</b></td>
+		<td width="125">비밀번호</td>
 		<td width="125" align="center"><%=member.getPwd() %></td>
-	</tr><tr height="30">			
-		<td width="125"><b>성별</b></td>
+		</tr><tr height="30">
+		<td width="125">성별</td>
 		<td width="125" align="center"><%=member.getGender() %></td>
-	</tr><tr height="30">	
-		<td width="125"><b>생년월일</b></td>
+		<td width="125">생년월일</td>
 		<td width="125" align="center"><%=member.getBirthdate()%></td>
-	</tr><tr height="30">		
-		<td width="125"><b>연락처</b></td>
+		<td width="125">연락처</td>
 		<td width="125" align="center"><%=member.getTel() %></td>
-	</tr><tr height="30">	
-		<td width="125"><b>이메일</b></td>
+		</tr><tr height="30">
+		<td width="125">이메일</td>
 		<td width="125" align="center"><%=member.getEmail() %></td>
-	</tr><tr height="30">	
-		<td width="125"><b>과거 진료경험</b></td>
+		<td width="125">과거 진료경험</td>
 		<td width="125" align="center"><%=member.getCon_past() %></td>
-	</tr><tr height="30">	
-			<td width="125"><b>최근 진료일</b></td>
+			<td width="125">최근 진료일</td>
 			<td width="125" align="center"><%=member.getCon_date() %></td>
-	</tr><tr height="30">
-			<td width="125"><b>진료과목</b></td>
+		</tr><tr height="30">
+			<td width="125">진료과목</td>
 			<td width="125" align="center"><%=member.getCon_cat() %></td>
-	</tr><tr height="30">	
-		<td width="125"><b>구분</b></td>
+		<td width="125">구분</td>
 		<td width="125" align="center"><%=member.getPosition() %></td>
-	</tr><tr height="30">	
-		<td width="125" align="center"><b>가입일</b></td>
+		<td width="125" align="center">가입일</td>
 		<td width="125" align="center"><%=sdf.format(member.getRegdate()) %></td>
-		</tr>
+		</tr>		 
 	<tr height="30">
 		<td colspan="4"  class="w3-center">
 			<input type="button" value="회원정보수정" 
@@ -77,7 +62,7 @@
 			&nbsp;&nbsp;&nbsp;&nbsp;
 			<input type="button" value="글목록" 
 			onclick="document.location.href='list.jsp?pageNum=<%=pageNum %>'">
-	</td></tr> </table></div></center>
+	</td></tr> </table>
 		<%
 		}catch(Exception e){}%>
 </div>

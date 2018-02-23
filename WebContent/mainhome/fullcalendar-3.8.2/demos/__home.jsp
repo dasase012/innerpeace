@@ -5,6 +5,8 @@
 <meta charset="euc-kr" />
 <link href="../fullcalendar.min.css" rel="stylesheet" />
 <link href="../fullcalendar.print.min.css" rel="stylesheet" media="print" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script src="../lib/moment.min.js"></script>
 <script src="../lib/jquery.min.js"></script>
 <script src="../fullcalendar.min.js"></script>
@@ -96,7 +98,10 @@
 
 </script>
 <style>
-
+  i{
+  	margin-left: 80%;
+  }
+ 
   body {
     margin: 40px 10px;
     padding: 0;
@@ -127,18 +132,23 @@
   }	
 </style>
 </head>
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <body>
-	<h1 class="w3-center">WELCOME
+	
 	<!-- home logo top right -->
-	<a href="/innerpeace/mainhome/fullcalendar-3.8.2/demos/__home.jsp">
-	<img class="w3-right" src="<%=request.getContextPath() %>/resources/home.png" style="width: 40px; height: 40px;">
-	</a></h1>
-	<!-- logout -->
-	<a href="/innerpeace/login/logout.jsp">
-	<button type="button" class="btn btn-default btn-sm">
-       Log out
-    </button>
+		<a href="/innerpeace/mainhome/fullcalendar-3.8.2/demos/__home.jsp">
+		<i id="home" class="material-icons" style="font-size:36px">home</i>
+		</a>
+	<!-- Logout logo top right -->
+		<a href="/innerpeace/membership/logout.jsp">
+		<i id="logout" class="material-icons" style="font-size:36px">power_settings_new</i>
+		</a>
+	<!-- Mypage logo top right -->
+		<a href="/innerpeace/view/updateAccess.jsp">
+		<i id="mypage" class="material-icons" style="font-size:36px">portrait</i>
+		</a>
+	<h1 class="w3-center">WELCOME
+	</h1>
+	
 	
 	<!-- header navigation -->
 	<div class="w3-bar w3-border w3-light-grey" id="navigation">

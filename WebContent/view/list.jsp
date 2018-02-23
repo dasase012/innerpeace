@@ -27,37 +27,39 @@
 
 <html>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
 <head><title>Insert title here</title></head>
 <body>
 	<p class="w3-left" style="padding-left: 30px"></p>
 <div class="w3-container">
 	<span class="w3-center w3-large">
-		<h3>(전체 글:<%=count %>)</h3>
+		<h3><b><u>전체 회원수:<%=count %></u></b></h3>
 	</span>
 <p class="w3-right w3-padding-right-large">
-	<a href="/innerpeace/Intropage/joinForm.jsp">글쓰기</a></p>
+	<a href="/innerpeace/mainhome/fullcalendar-3.8.2/demos/__home.jsp">메인페이지로 가기</a></p>
+	
 	<%	if(count==0){ %>
 	<table class="table-bordered" width="700">
 		<tr class="w3-grey">
 			<td align="center">게시판에 저장된 글이 없습니다.</td>
 	</table>
 	<%}else {%>
-	<table class="w3-table-all" width="700">
-		<tr class="w3-grey">
+	<table class="w3-table-all w3-hoverable" width="60%">
+		<tr class="w3-light-green">
+		<td align="center" width="50">번호</td>
 		<td align="center" width="50">아이디</td>
-		<td align="center" width="250">이름</td>
-		<td align="center" width="100">성별</td>
-		<td align="center" width="150">가입일</td>
+		<td align="center" width="50">이름</td>
+		<td align="center" width="50">성별</td>
+		<td align="center" width="100">가입일</td>
 	<% for(int i=0;i<memberList.size();i++){
 		JoinDataBean member = (JoinDataBean) memberList.get(i);%>
 		<tr height="30">
 		<td align="center" width="50"><%=number-- %></td>
-		<td width="250"><a href="content.jsp?id=<%=member.getId()%>&pageNum=<%=currentPage %>">
-			<%=member.getName()%></a></td>
-			<td align="center" width="100"><%=member.getGender() %></td>
-			<td align="center" width="150"><%=sdf.format(member.getRegdate()) %></td>
-			</tr><%} %>	</table> <% } %>
+		<td align="center" width="50"><a href="content.jsp?id=<%=member.getId()%>&pageNum=<%=currentPage %>">
+			<%=member.getId()%></td>
+			<td align="center" width="50"><%=member.getName()%></td>
+			<td align="center" width="50"><%=member.getGender() %></td>
+			<td align="center" width="100"><%=sdf.format(member.getRegdate()) %></td>
+			</tr></a><%} %>	</table> <% } %>
 
 <div class="w3-center">
 	<% int bottomLine=3;

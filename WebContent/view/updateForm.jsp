@@ -1,79 +1,85 @@
-<%@page import="board.BoardDataBean"%>
-<%@page import="board.BoardDBBean"%>
+
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="login.JoinDataBean"%>
+<%@page import="login.JoinDBBean"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<% String boardid = request.getParameter("boardid"); 
-	if(boardid==null) boardid = "1";
-	String pageNum = request.getParameter("pageNum");
-	if(pageNum==null || pageNum == ""){
-		pageNum="1";
-		}
-%>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 <html>
 <head><title>Insert title here</title></head>
 <%
-	int num = Integer.parseInt(request.getParameter("num")); //어떤게시물을 수정할래?
+	String id = request.getParameter("id"); //어떤게시물을 수정할래?
+	
+	String pageNum = request.getParameter("pageNum");
+	if(pageNum == null || pageNum ==""){
+		pageNum="1";} 
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 	try{
-		BoardDBBean dbPro = BoardDBBean.getInstance();
-		BoardDataBean article = dbPro.getArticle(num, boardid,"update");
+		JoinDBBean dbPro = JoinDBBean.getInstance();
+		JoinDataBean member = dbPro.getMember(id, "update");
 %>
 
 <body>
-<div class="w3-container"><center><b>글수정</b>
+<div class="w3-container"><center>
 <br>
 <form method="post" name="writeform" action="<%=request.getContextPath() %>/view/updatePro.jsp" >
-<input type="hidden" name="boardid" value="<%=boardid %>">
-<input type="hidden" name="num" value="<%=num %>">
+<input type="hidden" name="id" value="<%=id %>">
 <input type="hidden" name="pageNum" value="<%=pageNum %>">
 
-<table class="w3-table-all"  style="width:70%;" >
-   <tr>
-    <td align="right" colspan="2" >
-	    <a href="list.jsp"> 글목록</a> 
-   </td>
-   </tr>
-   <tr>
-    <td  width="70"   align="center">이 름</td>
-    <td  width="330">
-       <input type="text" size="10" maxlength="10" name="writer" value="<%=article.getWriter()%>"></td>
-  </tr>
-  <tr>
-    <td  width="70"   align="center" >제 목
-    </td>
-    <td width="330">
- 
- 
-       <input type="text" size="40" maxlength="50" name="subject" value="<%=article.getSubject()%>">
-	
-   
-   </td>
-  </tr>
-  <tr>
-    <td  width="70"   align="center">Email</td>
-    <td  width="330">
-       <input type="text" size="40" maxlength="30" name="email" value="<%=article.getEmail()%>"></td>
-  </tr>
-  <tr>
-    <td  width="70"   align="center" >내 용</td>
-    <td  width="330" >
-     <textarea name="content" rows="13" cols="40">
-     <%=article.getContent() %>
-     </textarea> </td>
-  </tr>
-  <tr>
-    <td  width="70"   align="center" >비밀번호</td>
-    <td  width="330" >
-     <input type="password" size="8" maxlength="12" name="passwd" <%-- value="<%=article.getPasswd()%>" --%>> 
-	 </td>
-  </tr>
-<tr>      
- <td colspan=2  align="center"> 
-  <input type="submit" value="글수정" >  
-  <input type="reset" value="다시작성">
-  <input type="button" value="목록보기" OnClick="window.location='list.jsp'">
-</td></tr></table>    
+<form class="w3-container w3-card-4 w3-white w3-text-black w3-margin" style="height: 100%;">
+<div class="w3-row w3-section">
+<body><br><br><center><h3><b><u>회원 정보 수정하기</u></b></h3><br><br>
+<div class="container" id="info">
+	<table class="w3-table w3-bordered w3-centered" style="width:50%;">
+	<tr height="30">
+		<td width="125" align="center"><b>아이디</b></td>
+		<td width="125" align="center"><%=member.getId()%></td>
+	</tr><tr height="30">	
+		<td width="125"><b>이름</b></td>
+		<td width="125">
+		<input type="text" size="10" maxlength="10" name="name" value="<%=member.getName() %>"></td>
+	</tr>
+	<tr height="30">	
+		<td width="125"><b>비밀번호</b></td>
+		<td width="125">
+		<input type="text" size="10" maxlength="10" name="pwd" value="<%=member.getPwd()%>"></td>
+	</tr><tr height="30">			
+		<td width="125"><b>성별</b></td>
+		<td width="125" >
+		<input type="text" size="10" maxlength="10" name="gender" value="<%=member.getGender() %>"></td>
+	</tr><tr height="30">	
+		<td width="125"><b>생년월일</b></td>
+		<td width="125">
+		<input type="text" size="10" maxlength="10" name="birthdate" value="<%=member.getBirthdate()%>"></td>
+	</tr><tr height="30">		
+		<td width="125"><b>연락처</b></td>
+		<td width="125">
+		<input type="text" size="10" maxlength="10" name="tel" value="<%=member.getTel() %>"></td>
+	</tr><tr height="30">	
+		<td width="125"><b>이메일</b></td>
+		<td width="125">
+		<input type="text" size="10" maxlength="10" name="email" value="<%=member.getEmail() %>"></td>
+	</tr><tr height="30">	
+		<td width="125"><b>과거 진료경험</b></td>
+		<td width="125" align="center"><%=member.getCon_past() %></td>
+	</tr><tr height="30">	
+			<td width="125"><b>최근 진료일</b></td>
+			<td width="125" align="center"><%=member.getCon_date() %></td>
+	</tr><tr height="30">
+			<td width="125"><b>진료과목</b></td>
+			<td width="125" align="center"><%=member.getCon_cat() %></td>
+	</tr><tr height="30">	
+		<td width="125"><b>구분</b></td>
+		<td width="125" align="center"><%=member.getPosition() %></td>
+	</tr>
+		<tr>      
+	 <td colspan=2  align="center"> 
+	  <input type="submit" value="정보수정" >  
+	  <input type="reset" value="다시작성">
+	  <input type="button" value="목록보기" OnClick="window.location='list.jsp'">
+	</td></tr>
+	</table></div></center>    
      
 </form>  </center></div>
 <%

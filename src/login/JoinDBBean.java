@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import board.BoardDataBean;
+
 
 
 public class JoinDBBean {
@@ -165,14 +165,14 @@ public class JoinDBBean {
 		
 		try {
 			conn = getConnection();
-			
+		/*	
 			if(chk.equals("content")) {
 			sql="update member set readcount=readcount+1 "
 					+ "where id = ? ";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			pstmt.executeUpdate();
-			}
+			}*/
 			
 			sql="select * from member where id = ? ";
 			pstmt=conn.prepareStatement(sql);
@@ -192,6 +192,7 @@ public class JoinDBBean {
 				members.setCon_date(rs.getString("con_date"));
 				members.setCon_cat(rs.getString("con_cat"));
 				members.setPosition(rs.getString("position"));
+				members.setRegdate(rs.getTimestamp("regdate"));
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -241,8 +242,9 @@ public class JoinDBBean {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "delete from member where id=? and passwd=?";
+		String sql = "delete from member where id=? and pwd=?";
 		int x = -1;
+		
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -256,7 +258,7 @@ public class JoinDBBean {
 		}return x;
 		
 	}
-	//update  ing
+	//update  
 	public int updateData(JoinDataBean info) {
 		
 		Connection conn = null;
@@ -265,15 +267,16 @@ public class JoinDBBean {
 		
 		try {			
 			conn = getConnection();
-			String sql = "update board set writer=?,email=?,subject=?,content=? where num=? and passwd=?";
+			String sql = "update member set name=?,pwd=?, email=?,birthdate=?,tel=? where id=? and pwd=?";
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1,info.getWriter());
-			pstmt.setString(2,article.getEmail());
-			pstmt.setString(3,article.getSubject());
-			pstmt.setString(4,article.getContent());
-			pstmt.setInt(5,article.getNum());
-			pstmt.setString(6,article.getPasswd());
+			pstmt.setString(1,info.getName());
+			pstmt.setString(2,info.getPwd());
+			pstmt.setString(3,info.getEmail());
+			pstmt.setString(4,info.getBirthdate());
+			pstmt.setString(5,info.getTel());
+			pstmt.setString(6,info.getId());
+			pstmt.setString(7,info.getPwd());
 			chk=pstmt.executeUpdate();
 			
 		}catch(Exception e) {
