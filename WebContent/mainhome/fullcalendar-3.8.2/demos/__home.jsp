@@ -152,7 +152,7 @@
 <body>
 	
 	<!-- home logo top right -->
-		<a href="/innerpeace/mainhome/fullcalendar-3.8.2/demos/__home2.jsp">
+		<a href="/innerpeace/mainhome/fullcalendar-3.8.2/demos/__home.jsp">
 		<i id="home" class="material-icons" style="font-size:36px">home</i>
 		</a>
 	<!-- Logout logo top right -->

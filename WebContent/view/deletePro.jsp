@@ -14,11 +14,16 @@
 	int check = dbPro.deleteData(id, pwd);
 	if(pwd.equals("admin")){
 %><meta http-equiv="Refresh" content="0;url=list.jsp?pageNum=<%=pageNum%>">
-<%}else{ %>
 	<script language="JavaScript">
-		alert("권한이 없습니다.");
-		history.go(-1);
-	</script><%} %>
+	alert("강제탈퇴가 완료되었습니다.")
+	history.go(-1);
+	</script>
+	<%}else{ %>
+	<script>
+	alert("권한이 없습니다.")
+	history.back();
+	</script>
+<%} %>
 <html>
 <head>
 <title>회원 강제 탈퇴</title>
