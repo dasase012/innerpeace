@@ -25,8 +25,8 @@ public class JoinDBBean {
 	public static Connection getConnection(){
 		Connection conn = null;
 		try {
-			/*String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xes";*///	HOME
-			String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:orcl";  //	SIST
+			String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xe";//	HOME
+			/*String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:orcl";*/  //	SIST
 			String dbId = "scott";
 			String dbPass = "tiger";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -165,14 +165,13 @@ public class JoinDBBean {
 		
 		try {
 			conn = getConnection();
-		/*	
+			
 			if(chk.equals("content")) {
-			sql="update member set readcount=readcount+1 "
-					+ "where id = ? ";
+			sql="update member where id = ? ";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			pstmt.executeUpdate();
-			}*/
+			}
 			
 			sql="select * from member where id = ? ";
 			pstmt=conn.prepareStatement(sql);

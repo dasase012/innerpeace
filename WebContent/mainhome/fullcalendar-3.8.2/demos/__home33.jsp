@@ -1,6 +1,3 @@
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="login.JoinDataBean"%>
-<%@page import="login.JoinDBBean"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <html>
@@ -135,33 +132,18 @@
   }	
 </style>
 </head>
-<%
-	String id = request.getParameter("id");
-	
-	String pageNum = request.getParameter("pageNum");
-	if(pageNum == null || pageNum ==""){
-		pageNum="1";} 
-	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
-
-	try{
-		JoinDBBean dbPro = JoinDBBean.getInstance();
-		JoinDataBean member = dbPro.getMember(id, "content");
-
-
-%>
 <body>
 	
 	<!-- home logo top right -->
-		<a href="/innerpeace/mainhome/fullcalendar-3.8.2/demos/__home2.jsp">
+		<a href="/innerpeace/mainhome/fullcalendar-3.8.2/demos/__home.jsp">
 		<i id="home" class="material-icons" style="font-size:36px">home</i>
 		</a>
 	<!-- Logout logo top right -->
 		<a href="/innerpeace/membership/logout.jsp">
 		<i id="logout" class="material-icons" style="font-size:36px">power_settings_new</i>
 		</a>
-		
 	<!-- Mypage logo top right -->
-		<a href="/innerpeace/membership/updateLogin.jsp">
+		<a href="/innerpeace/view/updateForm.jsp">
 		<i id="mypage" class="material-icons" style="font-size:36px">portrait</i>
 		</a>
 	<h1 class="w3-center">WELCOME
@@ -185,7 +167,5 @@
 	
 	<!-- footer contact admin -->
 	<h6 class="w3-bottom" align="center">contact: admin@innerpeace.com</h6>
-	<%
-		}catch(Exception e){}%>
 </body>
 </html>

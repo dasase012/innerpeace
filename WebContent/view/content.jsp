@@ -21,10 +21,13 @@
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 	try{
 		JoinDBBean dbPro = JoinDBBean.getInstance();
-		JoinDataBean member = dbPro.getMember(id, "content");
+		JoinDataBean member = dbPro.getMember(id, "update");
 
 
 %>
+<form method="post" name="updateform" action="<%=request.getContextPath() %>/view/updatePro.jsp" >
+<input type="hidden" name="id" value="<%=id %>">
+<input type="hidden" name="pageNum" value="<%=pageNum %>">
 <form class="w3-container w3-card-4 w3-white w3-text-black w3-margin" style="height: 100%;">
 <div class="w3-row w3-section">
 <body><br><br><center><h3><b><u>회원 정보</u></b></h3><br><br>
@@ -35,22 +38,29 @@
 		<td width="125" align="center"><%=member.getId()%></td>
 	</tr><tr height="30">	
 		<td width="125"><b>이름</b></td>
-		<td width="125" align="center"><%=member.getName() %></td>
-	</tr><tr height="30">	
+		<td width="125">
+		<input type="text" size="10" maxlength="10" name="name" value="<%=member.getName() %>"></td>
+	</tr>
+	<tr height="30">	
 		<td width="125"><b>비밀번호</b></td>
-		<td width="125" align="center"><%=member.getPwd() %></td>
+		<td width="125">
+		<input type="password" size="10" maxlength="10" name="pwd" value="<%=member.getPwd()%>"></td>
 	</tr><tr height="30">			
 		<td width="125"><b>성별</b></td>
-		<td width="125" align="center"><%=member.getGender() %></td>
+		<td width="125" >
+		<input type="text" size="10" maxlength="10" name="gender" value="<%=member.getGender() %>"></td>
 	</tr><tr height="30">	
 		<td width="125"><b>생년월일</b></td>
-		<td width="125" align="center"><%=member.getBirthdate()%></td>
+		<td width="125">
+		<input type="text" size="10" maxlength="10" name="birthdate" value="<%=member.getBirthdate()%>"></td>
 	</tr><tr height="30">		
 		<td width="125"><b>연락처</b></td>
-		<td width="125" align="center"><%=member.getTel() %></td>
+		<td width="125">
+		<input type="text" size="10" maxlength="10" name="tel" value="<%=member.getTel() %>"></td>
 	</tr><tr height="30">	
 		<td width="125"><b>이메일</b></td>
-		<td width="125" align="center"><%=member.getEmail() %></td>
+		<td width="125">
+		<input type="text" size="10" maxlength="10" name="email" value="<%=member.getEmail() %>"></td>
 	</tr><tr height="30">	
 		<td width="125"><b>과거 진료경험</b></td>
 		<td width="125" align="center"><%=member.getCon_past() %></td>
@@ -63,19 +73,16 @@
 	</tr><tr height="30">	
 		<td width="125"><b>구분</b></td>
 		<td width="125" align="center"><%=member.getPosition() %></td>
-	</tr><tr height="30">	
-		<td width="125" align="center"><b>가입일</b></td>
-		<td width="125" align="center"><%=sdf.format(member.getRegdate()) %></td>
-		</tr>
+	</tr>
+		
 	<tr height="30">
 		<td colspan="4"  class="w3-center">
-			<input type="button" value="회원정보수정" 
-			onclick="document.location.href='updateForm.jsp?id=<%=member.getId() %>&pageNum=<%=pageNum %>'">
+			<input type="submit" value="정보수정" >  
 			&nbsp;&nbsp;&nbsp;&nbsp;
 			<input type="button" value="강제탈퇴" 
 			onclick="document.location.href='deleteForm.jsp?id=<%=member.getId() %>&pageNum=<%=pageNum %>'">
 			&nbsp;&nbsp;&nbsp;&nbsp;
-			<input type="button" value="글목록" 
+			<input type="button" value="회원목록" 
 			onclick="document.location.href='list.jsp?pageNum=<%=pageNum %>'">
 	</td></tr> </table></div></center>
 		<%

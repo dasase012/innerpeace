@@ -22,8 +22,8 @@ onsubmit="return deleteSave()">
 	<input type="hidden" name="id" value="<%=id %>"></td></tr>
 	<tr height="30">
 	<td align="center">
-	<input type="submit" value="글삭제">
-	<input type="button" value="글목록" onclick="document.location.href='list.jsp?pageNum=<%=pageNum %>'">
+	<input type="submit" value="탈퇴">
+	<input type="button" value="회원목록" onclick="document.location.href='list.jsp?pageNum=<%=pageNum %>'">
 	</td></tr></table></form></center></div>
 </body>
 </html>

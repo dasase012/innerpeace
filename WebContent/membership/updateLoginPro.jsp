@@ -12,7 +12,6 @@
 		
 		String id = request.getParameter("id");
 		String pwd = request.getParameter("pwd");
-		String name = request.getParameter("name");
 		
 		int pwcheck = dbPro.login(id, pwd);
 	%>	<%	if(pwcheck == -1){ %>
@@ -30,18 +29,11 @@
 	      history.back();
 	     </script>
 	<%
-	    }else if(id.equals("admin")){
-  			  session.setAttribute("id",id);
-			   
-			  response.sendRedirect("/innerpeace/view/list.jsp?id="+id);
-	   } 
+	    } 
 	   else
 	   {
-		  session.setAttribute("id",id);
-		  session.setAttribute("name", name);	//name 저장 >> welcome 에 name을 넘겨줌
-		  System.out.println(name); 
-		  
-		  response.sendRedirect("/innerpeace/mainhome/fullcalendar-3.8.2/demos/__home.jsp?id="+id);
+		  session.setAttribute("id",id); 
+		  response.sendRedirect("/innerpeace/view/updateForm.jsp?id="+id);
 	   }		
 	%>
 </body>

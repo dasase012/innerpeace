@@ -23,7 +23,7 @@
 <body>
 <div class="w3-container"><center>
 <br>
-<form method="post" name="writeform" action="<%=request.getContextPath() %>/view/updatePro.jsp" >
+<form method="post" name="writeform" action="<%=request.getContextPath() %>/view/updatePro2.jsp" >
 <input type="hidden" name="id" value="<%=id %>">
 <input type="hidden" name="pageNum" value="<%=pageNum %>">
 
@@ -43,7 +43,7 @@
 	<tr height="30">	
 		<td width="125"><b>비밀번호</b></td>
 		<td width="125">
-		<input type="text" size="10" maxlength="10" name="pwd" value="<%=member.getPwd()%>"></td>
+		<input type="password" size="10" maxlength="10" name="pwd" value="<%=member.getPwd()%>"></td>
 	</tr><tr height="30">			
 		<td width="125"><b>성별</b></td>
 		<td width="125" >
@@ -77,7 +77,10 @@
 	 <td colspan=2  align="center"> 
 	  <input type="submit" value="정보수정" >  
 	  <input type="reset" value="다시작성">
-	  <input type="button" value="목록보기" OnClick="window.location='list.jsp'">
+	  <input type="button" value="취소" onclick="document.location.href='/innerpeace/mainhome/fullcalendar-3.8.2/demos/__home.jsp?pageNum=<%=pageNum %>'">
+	  <input type="button" value="탈퇴하기" 
+    	onclick="document.location.href='deleteForm2.jsp?id=<%=member.getId() %>&pageNum=<%=pageNum %>'">
+		&nbsp;&nbsp;&nbsp;&nbsp;
 	</td></tr>
 	</table></div></center>    
      
