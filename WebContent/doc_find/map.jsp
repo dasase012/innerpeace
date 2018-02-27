@@ -55,12 +55,21 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <body>
-	<h1 class="w3-center">WELCOME
-	
 	<!-- home logo top right -->
-	<a href="/innerpeace/mainhome/fullcalendar-3.8.2/demos/__home.jsp">
-	<img class="w3-right" src="<%=request.getContextPath() %>/resources/home.png" style="width: 40px; height: 40px;">
-	</a></h1>
+		<a href="/innerpeace/mainhome/home.jsp">
+		<i id="home" class="material-icons" style="font-size:36px">home</i>
+		</a>
+	<!-- Logout logo top right -->
+		<a href="/innerpeace/membershipUser/logout.jsp">
+		<i id="logout" class="material-icons" style="font-size:36px">power_settings_new</i>
+		</a>
+		
+	<!-- Mypage logo top right -->
+		<a href="/innerpeace/membershipUser/updateLogin.jsp">
+		<i id="mypage" class="material-icons" style="font-size:36px">portrait</i>
+		</a>
+	<h1 class="w3-center">WELCOME
+	</h1>
 	
 	<!-- header navigation -->
 	<div class="w3-bar w3-border w3-light-grey" id="navigation">

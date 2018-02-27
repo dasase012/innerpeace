@@ -1,15 +1,18 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="login.JoinDataBean"%>
+<%@page import="login.JoinDBBean"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <html>
 <head>
 <meta charset="euc-kr" />
-<link href="../fullcalendar.min.css" rel="stylesheet" />
-<link href="../fullcalendar.print.min.css" rel="stylesheet" media="print" />
+<link href="/innerpeace/mainhome/fullcalendar-3.8.2/fullcalendar.min.css" rel="stylesheet" />
+<link href="/innerpeace/mainhome/fullcalendar-3.8.2/fullcalendar.print.min.css" rel="stylesheet" media="print" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<script src="../lib/moment.min.js"></script>
-<script src="../lib/jquery.min.js"></script>
-<script src="../fullcalendar.min.js"></script>
+<script src="/innerpeace/mainhome/fullcalendar-3.8.2/lib/moment.min.js"></script>
+<script src="/innerpeace/mainhome/fullcalendar-3.8.2/lib/jquery.min.js"></script>
+<script src="/innerpeace/mainhome/fullcalendar-3.8.2/fullcalendar.min.js"></script>
 <script>
 
   $(document).ready(function() {
@@ -132,18 +135,33 @@
   }	
 </style>
 </head>
+<%
+	String id = request.getParameter("id");
+	
+	String pageNum = request.getParameter("pageNum");
+	if(pageNum == null || pageNum ==""){
+		pageNum="1";} 
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+
+	try{
+		JoinDBBean dbPro = JoinDBBean.getInstance();
+		JoinDataBean member = dbPro.getMember(id, "content");
+
+
+%>
 <body>
 	
 	<!-- home logo top right -->
-		<a href="/innerpeace/mainhome/fullcalendar-3.8.2/demos/__home.jsp">
+		<a href="/innerpeace/mainhome/home.jsp">
 		<i id="home" class="material-icons" style="font-size:36px">home</i>
 		</a>
 	<!-- Logout logo top right -->
-		<a href="/innerpeace/membership/logout.jsp">
+		<a href="/innerpeace/membershipUser/logout.jsp">
 		<i id="logout" class="material-icons" style="font-size:36px">power_settings_new</i>
 		</a>
+		
 	<!-- Mypage logo top right -->
-		<a href="/innerpeace/view/updateForm.jsp">
+		<a href="/innerpeace/membershipUser/updateLogin.jsp">
 		<i id="mypage" class="material-icons" style="font-size:36px">portrait</i>
 		</a>
 	<h1 class="w3-center">WELCOME
@@ -167,5 +185,7 @@
 	
 	<!-- footer contact admin -->
 	<h6 class="w3-bottom" align="center">contact: admin@innerpeace.com</h6>
+	<%
+		}catch(Exception e){}%>
 </body>
 </html>

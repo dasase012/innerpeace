@@ -35,7 +35,7 @@
 		<h3><b><u>전체 회원수:<%=count %></u></b></h3>
 	</span>
 <p class="w3-right w3-padding-right-large">
-	<a href="/innerpeace/mainhome/fullcalendar-3.8.2/demos/__home.jsp">메인페이지로 가기</a></p>
+	<a href="/innerpeace/mainhome/home.jsp">메인페이지로 가기</a></p>
 	
 	<%	if(count==0){ %>
 	<table class="table-bordered" width="700">

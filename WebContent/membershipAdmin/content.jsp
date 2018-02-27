@@ -25,7 +25,7 @@
 
 
 %>
-<form method="post" name="updateform" action="<%=request.getContextPath() %>/view/updatePro.jsp" >
+<form method="post" name="updateform" action="updatePro.jsp" >
 <input type="hidden" name="id" value="<%=id %>">
 <input type="hidden" name="pageNum" value="<%=pageNum %>">
 <form class="w3-container w3-card-4 w3-white w3-text-black w3-margin" style="height: 100%;">
@@ -39,12 +39,12 @@
 	</tr><tr height="30">	
 		<td width="125"><b>이름</b></td>
 		<td width="125">
-		<input type="text" size="10" maxlength="10" name="name" value="<%=member.getName() %>"></td>
+		<input type="text" size="10" maxlength="20" name="name" value="<%=member.getName() %>"></td>
 	</tr>
 	<tr height="30">	
 		<td width="125"><b>비밀번호</b></td>
 		<td width="125">
-		<input type="password" size="10" maxlength="10" name="pwd" value="<%=member.getPwd()%>"></td>
+		<input type="password" size="10" maxlength="15" name="pwd" value="<%=member.getPwd()%>"></td>
 	</tr><tr height="30">			
 		<td width="125"><b>성별</b></td>
 		<td width="125" >
@@ -56,11 +56,11 @@
 	</tr><tr height="30">		
 		<td width="125"><b>연락처</b></td>
 		<td width="125">
-		<input type="text" size="10" maxlength="10" name="tel" value="<%=member.getTel() %>"></td>
+		<input type="text" size="20" maxlength="15" name="tel" value="<%=member.getTel() %>"></td>
 	</tr><tr height="30">	
 		<td width="125"><b>이메일</b></td>
 		<td width="125">
-		<input type="text" size="10" maxlength="10" name="email" value="<%=member.getEmail() %>"></td>
+		<input type="text" size="20" maxlength="40" name="email" value="<%=member.getEmail() %>"></td>
 	</tr><tr height="30">	
 		<td width="125"><b>과거 진료경험</b></td>
 		<td width="125" align="center"><%=member.getCon_past() %></td>

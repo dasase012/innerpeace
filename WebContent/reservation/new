@@ -1,0 +1,98 @@
+<div class="reservation_form">
+	<form action="rsvpPro.jsp" method="post">
+		<div>
+			<input type="text" name="your name" required="">
+			<label>이름</label>
+			<span></span>
+		</div>
+		<div>
+			<input type="text" name="your id" required="">
+			<label>아이디</label>
+			<span></span>
+		</div>
+		<div>
+			<input type="text" name="tel" required="">
+			<label>기본 연락처</label>
+			<span></span>
+		</div>
+		<div>
+			<input type="text" name="tel2" >
+			<label>연락처 2</label>
+			<span></span>
+		</div>
+		<div>
+			<input type="email" name="email" >
+			<label>이메일</label>
+			<span></span>
+		</div>
+		<div>
+			<h2>성별 : </h2>
+			<input type="radio" name="gender" value="male">남
+			<input type="radio" name="gender" value="female">여
+		</div>
+		<div>
+			<select id="category1" required="">
+				<option value="">상담 받고자 하는 과목*</option>
+				<option value=""><성인정신건강 전반></option>
+				<option value="">우울증</option>
+				<option value="">분노조절,스트레스</option>
+				<option value="">불면증</option>
+				<option value="">대인공포증</option>
+				<option value="">섭식장애(거식,폭식)</option>
+				<option value="">중독(게임,성생활,술)</option>
+				<option value="">불안장애,강박증</option>
+				<option value="">외상 후 스트레스 장애</option>
+				<option value="">부부갈등,커플 카운셀링</option>
+				<option value=""><소아청소년 정신건강 전반></option>
+				<option value="">주의력 결핍 과잉 행동장애(ADHD)</option>
+				<option value="">틱장애</option>
+				<option value="">학습장애,적성 및 진로지도</option>
+				<option value="">정서장애</option>
+				<option value="">청소년 인터넷 중독</option>
+				<option value="">도벽과 거짓말</option>
+				<option value="">성폭력 피해 후유증,왕따 후유증</option>
+			</select>
+			<span></span>
+		</div>
+		<div>
+			<select id="category2" required="">
+				<option value="">상담 받고자 하는 선생님*</option>
+				<option value=""><%=getget%></option>
+				<option value=""><%=getget%></option>
+			</select>
+			<span></span>
+		</div>
+		<div>
+			<h2>현재 복용중이 약이 있습니까? </h2>
+			<input type="radio" name="medication" value="yes">예
+			<input type="radio" name="medication" value="no">아니오
+		</div>
+		<div>
+			<label class="list">있다면 아래에 이름을 적어주세요.<span></span></label>
+			<textarea></textarea>
+			<span></span>
+		</div>
+		<div>
+			<label class="list">그 밖에 진료 전 알려주실 사항이 있다면 아래에 적어주세요.<span></span></label>
+			<textarea></textarea>
+			<span></span>
+		</div>
+	</form>
+</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		

@@ -25,8 +25,8 @@ public class JoinDBBean {
 	public static Connection getConnection(){
 		Connection conn = null;
 		try {
-			String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xe";//	HOME
-			/*String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:orcl";*/  //	SIST
+			/*String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xe";//	HOME*/
+			String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:orcl";  //	SIST
 			String dbId = "scott";
 			String dbPass = "tiger";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -122,7 +122,7 @@ public class JoinDBBean {
 					+"(select rownum rnum,a.* "
 					+" from (select id,name,pwd,gender,birthdate,tel,email,"
 					+ "con_past,con_date,con_cat,position,regdate	"
-					+ "from member order by regdate) "
+					+ "from member order by regdate desc) "
 					+ " a ) where rnum between ? and ? ";
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setInt(1, startRow);
@@ -249,6 +249,26 @@ public class JoinDBBean {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			pstmt.setString(2, pwd);
+			x=pstmt.executeUpdate();
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			close(conn,rs,pstmt);
+		}return x;
+		
+	}
+	//deleteAdmin
+	public int deleteAdmin(String id, String pwd)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql="delete from member where id=?";
+		int x = -1;
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
 			x=pstmt.executeUpdate();
 		}catch(Exception ex) {
 			ex.printStackTrace();

@@ -24,7 +24,7 @@ onsubmit="return deleteSave()">
 	<td align="center">
 	<input type="submit" value="Å»Åð">
 	<input type="button" value="Ãë¼Ò" 
-	onclick="document.location.href='/innerpeace/mainhome/fullcalendar-3.8.2/demos/__home.jsp??id=<%=id%>&pageNum=<%=pageNum %>'">
+	onclick="document.location.href='/innerpeace/mainhome/fullcalendar-3.8.2/demos/__home.jsp?id=<%=id%>&pageNum=<%=pageNum %>'">
 	
 	
 	</td></tr></table></form></center></div>

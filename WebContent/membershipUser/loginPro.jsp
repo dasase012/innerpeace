@@ -33,7 +33,7 @@
 	    }else if(id.equals("admin")){
   			  session.setAttribute("id",id);
 			   
-			  response.sendRedirect("/innerpeace/view/list.jsp?id="+id);
+			  response.sendRedirect("/innerpeace/membershipAdmin/list.jsp?id="+id);
 	   } 
 	   else
 	   {
@@ -41,7 +41,7 @@
 		  session.setAttribute("name", name);	//name 저장 >> welcome 에 name을 넘겨줌
 		  System.out.println(name); 
 		  
-		  response.sendRedirect("/innerpeace/mainhome/fullcalendar-3.8.2/demos/__home.jsp?id="+id);
+		  response.sendRedirect("/innerpeace/mainhome/home.jsp?id="+id);
 	   }		
 	%>
 </body>

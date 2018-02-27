@@ -33,7 +33,7 @@
 	   else
 	   {
 		  session.setAttribute("id",id); 
-		  response.sendRedirect("/innerpeace/view/updateForm.jsp?id="+id);
+		  response.sendRedirect("/innerpeace/membershipUser/updateForm.jsp?id="+id);
 	   }		
 	%>
 </body>

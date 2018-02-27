@@ -10,15 +10,16 @@
 	JoinDBBean dbPro = JoinDBBean.getInstance();
 	int check = dbPro.deleteData(id, pwd);
 	if(check==1){
-%><meta http-equiv="Refresh" content="0;url=/innerpeace/Intropage/intro_v1.jsp">
+%>
 	<script language="JavaScript">
 	alert("탈퇴가 완료되었습니다.")
-	history.go(-1);
+	
 	</script>
+	<meta http-equiv="Refresh" content="0;url=/innerpeace/Intropage/intro_v1.jsp">
 	<%}else{ %>
 	<script>
 	alert("비밀번호가 맞지 않습니다")
-	history.back();</script>
+	history.go(-1);</script>
 <%} %>
 <html>
 <head>

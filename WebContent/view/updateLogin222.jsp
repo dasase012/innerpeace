@@ -8,8 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<center>
-	<form class="w3-container w3-card-4 w3-white w3-text-black w3-margin" style="height: 100%; width: 70%;" 
+	 <center>
+	 <form class="w3-container w3-card-4 w3-white w3-text-black w3-margin" style="height: 100%; width: 70%;" 
 	action="/innerpeace/membership/updateLoginPro.jsp" method="post">
         <div class="w3-section">
          	<p><b>보안을 위해 아이디와 비밀번호를 한 번 더 입력해 주세요</b></p>

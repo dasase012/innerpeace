@@ -20,7 +20,7 @@
   JoinDBBean dbPro = JoinDBBean.getInstance(); 
 	int chk = dbPro.updateData(info);%>
 <% if (chk==1){ %>
-<meta http-equiv="Refresh" content="0;url=/innerpeace/mainhome/fullcalendar-3.8.2/demos/__home.jsp?id=<%=id%>&pageNum=<%=pageNum %>">
+<meta http-equiv="Refresh" content="0;url=/innerpeace/membershipAdmin/list.jsp?id=<%=id %>&pageNum=<%=pageNum %>">
 <script>
 alert("회원정보가 수정되었습니다.")</script>
 <%}else{ %>
