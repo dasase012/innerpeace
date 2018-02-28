@@ -13,7 +13,9 @@
 	<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=vcK0vxqV3L0dmbMHCq6D&submodules=geocoder"></script>
     <link rel="stylesheet" type="text/css" href="../../docs/css/examples-base.css" />
 <style>
-
+  i{
+  	margin-left: 80%;
+  }
   body {
     margin: 40px 10px;
     padding: 0;
@@ -53,6 +55,7 @@
 </head>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <body>
 	<!-- home logo top right -->

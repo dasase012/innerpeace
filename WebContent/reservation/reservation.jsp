@@ -18,8 +18,10 @@
 	  $( function() {
 		$( "#datepicker2" ).datepicker();
 	  } );
-	  $(document).ready(function(){
-		    $('input.timepicker').timepicker({});
+	  $(function(){
+		$('input.timepicker').timepicker({
+		    	scrollbar: true
+		    });  
 		});
 	  </script>
 
@@ -76,10 +78,11 @@
 	</div>
 	<!-- body board -->
 	<center>
-	<form class="w3-container w3-card-4 w3-white w3-text-black w3-margin" style="height: 100%;width:40%;">
+	<form class="w3-container w3-card-4 w3-white w3-text-black w3-margin" style="height: 110%;width:40%; ">
 		<div class="reservation_form">
 	<form action="rsvpPro.jsp" method="post">
-		<div>
+	
+		<div><br>
 			<label>이름</label><span></span>
 			<input class="w3-input w3-hover-grey" style="width: 50%;"type="text" name="your name" required="">
 		</div>
@@ -105,7 +108,8 @@
 			<input type="radio" name="gender" value="female">여
 		</div>
 		<div>
-			<select id="category1" required="">
+	
+			<select id="category1" class="w3-select" name="option" style="width: 50%;" required="">
 				<option value="">상담 받고자 하는 과목*</option>
 				<option value=""></option>
 				<option value="">----성인정신건강 전반----</option>
@@ -132,7 +136,7 @@
 			<span></span>
 		</div>
 		<div>
-			<select id="category2" required="">
+			<select id="category2" class="w3-select" name="option" style="width: 50%;" required="">
 				<option value="">상담 받고자 하는 선생님*</option>
 				<option value="">상담자A</option>
 				<option value="">상담자B</option>
@@ -142,13 +146,13 @@
 			<span></span>
 		</div><br>
 		<div>
-			<label>원하시는 진료 일시를 선택해 주세요.<span></span></label>
+			<label>원하시는 진료 일시를 선택해 주세요.<br><span></span></label>
 			<input class="date1" id="datepicker" name="Text" type="text" value="MM/DD/YYYY" 
 			onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'MM/DD/YYYY';}" required="">
 			<input class="timepicker timepicker-with-dropdown text-center" />
 		</div><br>
 		<div>
-			<label>차선으로 가능한 진료 일시를 선택해 주세요.<span></span></label>
+			<label>차선으로 가능한 진료 일시를 선택해 주세요.<br><span></span></label>
 			<input class="date2" id="datepicker2" name="Text" type="text" value="MM/DD/YYYY" 
 			onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'MM/DD/YYYY';}" required="">
 			<input class="timepicker timepicker-with-dropdown text-center"/>
@@ -164,11 +168,11 @@
 			<span></span>
 		</div><br>
 		<div>
-			<label class="list">그 밖에 진료 전 알려주실 사항이 있다면 아래에 적어주세요.<br><span></span></label>
+			<label class="list">그 밖에 알려주실 사항이 있다면 아래에 적어주세요.<br><span></span></label>
 			<textarea style="height: 10%; width: 40%;"></textarea>
 			<span></span>
-		</div><br>
-		<input type="submit" name="submit" value="예약하기">
+		<br><br>
+		<input type="submit" name="submit" value="예약하기"></div>
 	</form>
 	</div>
 	</form>
